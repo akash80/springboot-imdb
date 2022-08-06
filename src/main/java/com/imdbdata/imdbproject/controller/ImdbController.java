@@ -2,38 +2,54 @@ package com.imdbdata.imdbproject.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.imdbdata.imdbproject.database.CrewData;
+import com.imdbdata.imdbproject.database.NameData;
+import com.imdbdata.imdbproject.database.PrincipalData;
 import com.imdbdata.imdbproject.database.RatingData;
+import com.imdbdata.imdbproject.database.TitleData;
+import com.imdbdata.imdbproject.model.Crew;
+import com.imdbdata.imdbproject.model.Name;
+import com.imdbdata.imdbproject.model.Principal;
 import com.imdbdata.imdbproject.model.Rating;
-import com.imdbdata.imdbproject.service.RatingService;
+import com.imdbdata.imdbproject.model.Title;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.readFile;
-import static com.imdbdata.imdbproject.utils.BulkQueryBuilder.ratingAddQuery;
 import java.io.IOException;
-import java.util.List;
 
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/api")
 public class ImdbController{
 
-    @Autowired
-    RatingService ratingService;
-
-    @GetMapping("/{id}")
-    public Rating get(@PathVariable("id") String ratingId) throws IOException {
+    @GetMapping("/rating/{id}")
+    public Rating getRating(@PathVariable("id") String ratingId) throws IOException {
         Rating rating =  RatingData.getInstance().ratings.get(ratingId);
         return rating;
     }
 
-    @GetMapping("/setData")
-    public String set() throws IOException {
-        long start = System.currentTimeMillis();
-        RatingData.getInstance();
-        long end = System.currentTimeMillis();
-        return "takes " +
-        (end - start) + "ms";
+    @GetMapping("/name/{id}")
+    public Name getName(@PathVariable("id") String nameId) throws IOException {
+        Name name =  NameData.getInstance().names.get(nameId);
+        return name;
+    }
+
+    @GetMapping("/principal/{id}")
+    public Principal getPrincipal(@PathVariable("id") String id) throws IOException {
+        Principal name =  PrincipalData.getInstance().principals.get(id);
+        return name;
+    }
+
+    @GetMapping("/crew/{id}")
+    public Crew getCrew(@PathVariable("id") String id) throws IOException {
+        Crew name =  CrewData.getInstance().crews.get(id);
+        return name;
+    }
+
+    @GetMapping("/title/{id}")
+    public Title getTitle(@PathVariable("id") String id) throws IOException {
+        Title name =  TitleData.getInstance().titles.get(id);
+        return name;
     }
 }

@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.imdbdata.imdbproject.database.RatingData;
-import com.imdbdata.imdbproject.model.Rating;
 
 public class ReadTsvFileUtils {
     private static final String PATH = "D:/projects/spring boot/dataset/";

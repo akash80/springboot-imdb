@@ -17,15 +17,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Rating {
+public class Crew {
     @Id
     private String tconst;
-    private Float averageRating;
-    private int numVotes;
+    private String[] directors;
+    private String[] writers;
 
-    public Rating(String[] data){
+    public Crew(String[] data){
         this.tconst = data[0];
-        this.averageRating = Float.parseFloat(data[1]);
-        this.numVotes = Integer.parseInt(data[2]);
+        this.directors = data[1].split(",");
+        this.writers = data[2].split(",");
     }
+
 }
+

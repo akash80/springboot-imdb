@@ -21,7 +21,7 @@ public class RatingData {
             single_instance = new RatingData();
             readFile("title.ratings.tsv/data.tsv").lines().skip(1).forEach(a -> {
                 String[] data = a.split("\\t");
-                Rating rating = new Rating(data[0],Float.parseFloat(data[1]),Integer.parseInt(data[2]));
+                Rating rating = new Rating(data);
                 single_instance.ratings.put(rating.getTconst(), rating);
              });
         }

@@ -17,15 +17,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Rating {
+public class Principal {
     @Id
     private String tconst;
-    private Float averageRating;
-    private int numVotes;
+    private int ordering;
+    private String nconst;
+    private String category;
+    private String job;
+    private String[] characters;
 
-    public Rating(String[] data){
+    public Principal(String[] data){
         this.tconst = data[0];
-        this.averageRating = Float.parseFloat(data[1]);
-        this.numVotes = Integer.parseInt(data[2]);
+        this.ordering = Integer.parseInt(data[1]);
+        this.nconst = data[2];
+        this.category = data[3];
+        this.job = data[4];
+        this.characters = data[5].split(",");
     }
+
 }
+
