@@ -1,13 +1,15 @@
 package com.imdbdata.imdbproject.database;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.imdbdata.imdbproject.model.Name;
 import com.imdbdata.imdbproject.model.Rating;
 import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.readFile;
-
+import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.PATH;;
 
 public class NameData {
     private static NameData single_instance = null;
@@ -20,11 +22,30 @@ public class NameData {
     {
         if (single_instance == null){
             single_instance = new NameData();
-            readFile("name.basics.tsv/data.tsv").lines().skip(1).forEach(a -> {
-                String[] data = a.split("\\t");
-                Name name = new Name(data);
-                single_instance.names.put(name.getTconst(), name);
-             });
+            // readFile("name.basics.tsv/data.tsv").lines().skip(1).forEach(a -> {
+            //     String[] data = a.split("\\t");
+                // Name name = new Name(data);
+                // single_instance.names.put(name.getTconst(), name);
+            //  });
+            FileInputStream inputStream = null;
+            Scanner sc = null;
+            try {
+                inputStream = new FileInputStream(PATH+"name.basics.tsv/data.tsv");
+                sc = new Scanner(inputStream, "UTF-8");
+                while(sc.hasNext()){
+                    String line = sc.nextLine();
+                    String[] data = line.split("\\t");
+                    Name name = new Name(data);
+                    single_instance.names.put(name.getTconst(), name);
+                }
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (sc != null) {
+                    sc.close();
+                }
+            }
         }
         return single_instance;
     }

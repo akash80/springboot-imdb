@@ -18,10 +18,10 @@ public class ImdbProjectApplication {
 		SpringApplication.run(ImdbProjectApplication.class, args);
 		// intialize data
 		RatingData.getInstance();
-		NameData.getInstance();
-		CrewData.getInstance();
-		PrincipalData.getInstance();
-		TitleData.getInstance();
+		// NameData.getInstance();
+		// CrewData.getInstance();
+		// PrincipalData.getInstance();
+		// TitleData.getInstance();
 		System.out.println("*****************Loaded***********************");
 	}
 
