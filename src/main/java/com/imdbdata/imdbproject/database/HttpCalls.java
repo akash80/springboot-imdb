@@ -1,11 +1,6 @@
 package com.imdbdata.imdbproject.database;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.imdbdata.imdbproject.model.Crew;
-import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.readFile;
 
 
 public class HttpCalls {

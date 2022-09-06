@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.imdbdata.imdbproject.model.Name;
-import com.imdbdata.imdbproject.model.Rating;
-import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.readFile;
-import static com.imdbdata.imdbproject.utils.ReadTsvFileUtils.PATH;;
+import static com.imdbdata.imdbproject.config.Configuration.BASE_PATH;
 
 public class NameData {
     private static NameData single_instance = null;
@@ -30,7 +28,7 @@ public class NameData {
             FileInputStream inputStream = null;
             Scanner sc = null;
             try {
-                inputStream = new FileInputStream(PATH+"name.basics.tsv/data.tsv");
+                inputStream = new FileInputStream(BASE_PATH+"name.basics.tsv/data.tsv");
                 sc = new Scanner(inputStream, "UTF-8");
                 while(sc.hasNext()){
                     String line = sc.nextLine();

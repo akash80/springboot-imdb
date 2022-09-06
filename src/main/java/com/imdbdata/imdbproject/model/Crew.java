@@ -1,5 +1,6 @@
 package com.imdbdata.imdbproject.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -20,13 +21,15 @@ import lombok.ToString;
 public class Crew {
     @Id
     private String tconst;
-    private String[] directors;
-    private String[] writers;
+    @Column(columnDefinition="TEXT")
+    private String directors;
+    @Column(columnDefinition="TEXT")
+    private String writers;
 
     public Crew(String[] data){
         this.tconst = data[0];
-        this.directors = data[1].split(",");
-        this.writers = data[2].split(",");
+        this.directors = data[1];
+        this.writers = data[2];
     }
 
 }
